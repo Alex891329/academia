@@ -8,12 +8,9 @@ app.use(cors());
 app.use(express.json());
 
 // Conectando ao MongoDB
-mongoose.connect('http://localhost:3000/alunos', {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-})
-.then(() => console.log('Conectado ao MongoDB'))
-.catch((err) => console.error('Erro ao conectar ao MongoDB', err));
+mongoose.connect('mongodb://localhost:27017/login')
+  .then(() => console.log('Conectado ao MongoDB'))
+  .catch((err) => console.error('Erro ao conectar ao MongoDB', err));
 
 // Definindo o modelo de aluno
 const alunoSchema = new mongoose.Schema({
@@ -77,4 +74,5 @@ app.post('/login', async (req, res) => {
 
 // Iniciando o servidor
 app.listen(3000, () => console.log('Servidor rodando na porta 3000'));
+
 

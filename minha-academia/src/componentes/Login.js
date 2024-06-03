@@ -1,13 +1,18 @@
-import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import React, { Component, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Container from 'react-bootstrap/Container';
+import Card from 'react-bootstrap/Card';
 import axios from 'axios';
+import './Login.css';
 
 function Login() {
+  
   const [email, setEmail] = useState('');
   const [senha, setSenha] = useState('');
+  const navigate = useNavigate();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -17,7 +22,12 @@ function Login() {
         email,
         senha,
       });
-      console.log(response.data); // Deve exibir a mensagem "Login realizado com sucesso" se o login for bem-sucedido
+
+      if (response.data === 'Login realizado com sucesso') {
+        navigate('/dashboard');
+      } else {
+        console.error('Falha no login');
+      }
     } catch (error) {
       console.error(error);
     }
@@ -25,21 +35,23 @@ function Login() {
 
   return (
     <Container style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', height: '100vh' }}>
-      <h1 style={{ marginBottom: '20px' }}>Login</h1>
-      <Form style={{ width: '300px' }} onSubmit={handleSubmit}>
-        <Form.Group controlId="formBasicEmail">
-          <Form.Label>Usuário</Form.Label>
-          <Form.Control type="email" placeholder="Insira o usuário" value={email} onChange={(e) => setEmail(e.target.value)} />
-        </Form.Group>
+      <h1 style={{ marginBottom: '30px', background: 'white', border: '3px solid red' }}>Login</h1>
+      <Card style={{ width: '300px', padding: '20px', background: 'white', border: '3px solid red' }}>
+        <Form onSubmit={handleSubmit}>
+          <Form.Group controlId="formBasicEmail">
+            <Form.Label>Usuário</Form.Label>
+            <Form.Control type="email" placeholder="Insira o usuário" value={email} onChange={(e) => setEmail(e.target.value)} />
+          </Form.Group>
 
-        <Form.Group controlId="formBasicPassword">
-          <Form.Label>Senha</Form.Label>
-          <Form.Control type="password" placeholder="Senha" value={senha} onChange={(e) => setSenha(e.target.value)} />
-        </Form.Group>
-        <Button variant="primary" type="submit">
-          Entrar
-        </Button>
-      </Form>
+          <Form.Group controlId="formBasicPassword">
+            <Form.Label>Senha</Form.Label>
+            <Form.Control type="password" placeholder="Senha" value={senha} onChange={(e) => setSenha(e.target.value)} />
+          </Form.Group>
+          <Button variant="primary" type="submit">
+            Entrar
+          </Button>
+        </Form>
+      </Card>
       <Link to="/">
         <Button variant="link">Voltar para Home</Button>
       </Link>
@@ -48,3 +60,4 @@ function Login() {
 }
 
 export default Login;
+

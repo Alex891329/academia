@@ -1,0 +1,13 @@
+body {
+    background-image: url('./acad.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+  
+  button {
+    transition: background-color 0.3s ease;
+  }
+  
+  button:hover {
+    background-color: #e6321b;
+  }
