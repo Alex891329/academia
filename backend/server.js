@@ -8,9 +8,10 @@ app.use(cors());
 app.use(express.json());
 
 // Conectando ao MongoDB
-mongoose.connect('mongodb://localhost:27017/login')
+mongoose.connect('mongodb://localhost:27017/academia')
   .then(() => console.log('Conectado ao MongoDB'))
   .catch((err) => console.error('Erro ao conectar ao MongoDB', err));
+
 
 // Definindo o modelo de aluno
 const alunoSchema = new mongoose.Schema({
@@ -65,7 +66,7 @@ app.post('/login', async (req, res) => {
       return res.status(401).send('Senha incorreta');
     }
 
-    res.send('Login realizado com sucesso');
+    res.send({ message: 'Login realizado com sucesso' });
   } catch (error) {
     console.error(error);
     res.status(500).send('Erro ao fazer login');
@@ -74,5 +75,3 @@ app.post('/login', async (req, res) => {
 
 // Iniciando o servidor
 app.listen(3000, () => console.log('Servidor rodando na porta 3000'));
-
-

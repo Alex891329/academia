@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import React, { Component, useState } from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
@@ -9,7 +9,6 @@ import axios from 'axios';
 import './Login.css';
 
 function Login() {
-  
   const [email, setEmail] = useState('');
   const [senha, setSenha] = useState('');
   const navigate = useNavigate();
@@ -23,13 +22,13 @@ function Login() {
         senha,
       });
 
-      if (response.data === 'Login realizado com sucesso') {
+      if (response.data.message === 'Login realizado com sucesso') {
         navigate('/dashboard');
       } else {
-        console.error('Falha no login');
+        console.error('Falha no login', response.data);
       }
     } catch (error) {
-      console.error(error);
+      console.error('Erro na requisição:', error.response ? error.response.data : error.message);
     }
   };
 
@@ -60,4 +59,3 @@ function Login() {
 }
 
 export default Login;
-
