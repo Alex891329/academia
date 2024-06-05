@@ -1,13 +1,69 @@
+/* Estilos gerais */
 body {
-    background-image: url('./acad.jpg');
-    background-size: cover;
-    background-repeat: no-repeat;
-  }
-  
-  button {
-    transition: background-color 0.3s ease;
-  }
-  
-  button:hover {
-    background-color: #e6321b;
-  }
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  color: #333;
+  background-image: url('./acad.jpg');
+}
+
+/* Estilos para a Navbar */
+.Navbar {
+  background-color: #333;
+  color: white;
+}
+
+.Navbar.Brand {
+  color: #ff6347;
+}
+
+/* Estilos para os Cards */
+.Card {
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  border-radius: 5px;
+}
+
+.Card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+.Card.Body {
+  padding: 2px 16px;
+}
+
+.Card.Title {
+  color: #ff6347;
+}
+
+/* Estilos para o Container */
+.Container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+/* Estilos para o botão */
+.Button {
+  background-color: #ff6347;
+  color: white;
+  border: none;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+}
+
+.Button:hover {
+  background-color: white;
+  color: black;
+}
+
+
+.custom-font {
+  font-family: 'Roboto', sans-serif;
+}
