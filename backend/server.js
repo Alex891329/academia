@@ -2,17 +2,19 @@ const express = require('express');
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 const cors = require('cors');
+const bodyParser = require('body-parser');
 
 const app = express();
 app.use(cors());
 app.use(express.json());
+app.use(bodyParser.json());
 
 // Conectando ao MongoDB
 mongoose.connect('mongodb://localhost:27017/', )
   .then(() => console.log('Conectado ao MongoDB'))
   .catch((err) => console.error('Erro ao conectar ao MongoDB', err));
 
-//Definindo modelo de aluno
+// Definindo o modelo de aluno
 const alunoSchema = new mongoose.Schema({
   nome: String,
   peso: String,
@@ -48,7 +50,31 @@ app.post('/alunos', async (req, res) => {
   }
 });
 
-//Definindo metodo delete aluno
+// Rota para atualizar um aluno
+app.put('/alunos/:id', async (req, res) => {
+  try {
+    const id = req.params.id;
+    const { nome, altura, peso, inicio } = req.body;
+
+    const aluno = await Aluno.findById(id);
+    if (!aluno) {
+      return res.status(404).send('Aluno não encontrado');
+    }
+
+    aluno.nome = nome || aluno.nome;
+    aluno.altura = altura || aluno.altura;
+    aluno.peso = peso || aluno.peso;
+    aluno.inicio = inicio || aluno.inicio;
+
+    const resultado = await aluno.save();
+    res.send(resultado);
+  } catch (error) {
+    console.error(error);
+    res.status(500).send('Erro ao atualizar aluno');
+  }
+});
+
+// Rota para excluir um aluno
 app.delete('/alunos/:id', async (req, res) => {
   try {
     const id = req.params.id;
@@ -60,8 +86,7 @@ app.delete('/alunos/:id', async (req, res) => {
   }
 });
 
-
-  // Definindo o modelo de administrador
+// Definindo o modelo de administrador
 const adminSchema = new mongoose.Schema({
   nome: String,
   email: String,

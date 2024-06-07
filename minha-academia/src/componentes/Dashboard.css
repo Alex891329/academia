@@ -21,6 +21,9 @@ body {
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
   transition: 0.3s;
   border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   
 }
 
@@ -37,13 +40,14 @@ body {
 }
 
 /* Estilos para o Container */
-.Container {
+.container {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
-  background-color: #f4f4f4;
+  height: 100vh; /* Isso fará com que o elemento ocupe toda a altura da tela */
+  flex-direction: column; /* Isso fará com que os elementos filhos sejam organizados verticalmente */
 }
+
 
 /* Estilos para o botão */
 .Button {
