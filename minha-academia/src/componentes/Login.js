@@ -1,10 +1,6 @@
-import { useNavigate } from 'react-router-dom';
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import Button from 'react-bootstrap/Button';
-import Form from 'react-bootstrap/Form';
-import Container from 'react-bootstrap/Container';
-import Card from 'react-bootstrap/Card';
+import { useNavigate, Link } from 'react-router-dom';
+import { Button, Form, Container, Card } from 'react-bootstrap';
 import axios from 'axios';
 import './Login.css';
 
@@ -17,10 +13,7 @@ function Login() {
     event.preventDefault();
 
     try {
-      const response = await axios.post('http://localhost:3000/login', {
-        email,
-        senha,
-      });
+      const response = await axios.post('http://localhost:3000/login', { email, senha });
 
       if (response.data.message === 'Login realizado com sucesso') {
         navigate('/dashboard');
@@ -33,30 +26,42 @@ function Login() {
   };
 
   return (
-    <Container style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', height: '100vh' }}>
-      <h1 style={{ marginBottom: '30px', background: 'white', border: '3px solid red' }}>Login</h1>
-      <Card style={{ width: '300px', padding: '20px', background: 'white', border: '3px solid red' }}>
+    <Container className="login-container">
+      <h1 className="login-title">Login TIP</h1>
+      <Card className="login-card">
         <Form onSubmit={handleSubmit}>
           <Form.Group controlId="formBasicEmail">
-            <Form.Label>Usuário</Form.Label>
-            <Form.Control type="email" placeholder="Insira o usuário" value={email} onChange={(e) => setEmail(e.target.value)} />
+            <Form.Label>Email : </Form.Label>
+            <Form.Control 
+              type="email" 
+              placeholder="Digite seu email" 
+              value={email} 
+              onChange={(e) => setEmail(e.target.value)} 
+            />
           </Form.Group>
 
           <Form.Group controlId="formBasicPassword">
-            <Form.Label>Senha</Form.Label>
-            <Form.Control type="password" placeholder="Senha" value={senha} onChange={(e) => setSenha(e.target.value)} />
+            <Form.Label>Senha: </Form.Label>
+            <Form.Control 
+              type="password" 
+              placeholder="Digite sua senha" 
+              value={senha} 
+              onChange={(e) => setSenha(e.target.value)} 
+            />
           </Form.Group>
-          <Button variant="primary" type="submit">
+
+          <Button variant="primary" type="submit" className="login-button">
             Entrar
           </Button>
         </Form>
       </Card>
       <Link to="/">
-        <Button variant="link">Voltar para Home</Button>
+        <Button variant="link" className="back-button">
+          Voltar para Home
+        </Button>
       </Link>
     </Container>
   );
 }
 
 export default Login;
-

@@ -6,22 +6,21 @@ import "./Home.css";
 function Home() {
   return (
     <>
-      <Container className="p-3 bg-light rounded-3" style={{ marginTop: '30px' }}>
-        <Card style={{ width: '30rem', backgroundColor: 'white', border: '3px solid red' }}>
+      <Container className="p-3 bg-light rounded-3 mt-3">
+        <Card className="custom-card">
           <Card.Body>
-            <Card.Title><strong>Bem-vindo ao Administrador de Academia V1.0</strong></Card.Title>
-            <Card.Text>Gerenciando sua academia com eficiência e simplicidade.</Card.Text>
+            <Card.Title><strong>Bem-vindo a TIP </strong></Card.Title>
+            
           </Card.Body>
         </Card>
       </Container>
-      
 
-      <Container className="custom-font"  style={{ marginTop: '30px', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-        <Card style={{ width: '50rem', backgroundColor: 'white', border: '3px solid red' }}>
+      <Container className="custom-font mt-3 d-flex flex-column align-items-center">
+        <Card className="custom-card-wide">
           <Card.Body>
             <Card.Title><strong>Descrição do Projeto</strong></Card.Title>
             <Card.Text>
-              O <strong>Gerenciador de Academia Funcional Fitness</strong> é uma aplicação web desenvolvida para facilitar a gestão de academias, oferecendo uma solução completa para o controle de alunos, matrículas, agendamentos de aulas e acompanhamento de medidas corporais.
+              O <strong>Gerenciador de Academia TIP</strong> é uma aplicação web desenvolvida para facilitar a gestão de academias, oferecendo uma solução completa para o controle de alunos, matrículas, agendamentos de aulas e acompanhamento de medidas corporais.
             </Card.Text>
             <Card.Text>
               <strong>Funcionalidades Principais:</strong>
@@ -47,9 +46,8 @@ function Home() {
             </Card.Text>
           </Card.Body>
           <Link to="/login">
-              <Button variant="primary">Realizar Login</Button>
-            </Link>
-          
+            <Button variant="primary" className="login-button">Realizar Login</Button>
+          </Link>
         </Card>
       </Container>
     </>
