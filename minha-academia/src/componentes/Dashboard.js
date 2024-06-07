@@ -155,10 +155,11 @@ function Dashboard() {
             Sair
           </Button>
         </Link>
+      
       </div>
 
       {/* Modal para cadastro de novo aluno */}
-      <Modal show={showModal} onHide={() => setShowModal(false)}>
+      <Modal style={{backgroundColor: 'white'}} show={showModal} onHide={() => setShowModal(false)}>
         <Modal.Header closeButton>
           <Modal.Title>Cadastrar Novo Aluno</Modal.Title>
         </Modal.Header>
