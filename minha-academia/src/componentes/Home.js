@@ -45,6 +45,16 @@ function Home() {
               O projeto visa proporcionar uma ferramenta prática e eficiente para gestores de academias, otimizando processos administrativos e melhorando a experiência dos alunos. Além disso, a aplicação foi desenvolvida seguindo as melhores práticas de segurança e proteção de dados, em conformidade com a LGPD (Lei Geral de Proteção de Dados).
             </Card.Text>
           </Card.Body>
+          <nav>
+        <ul>
+          <li>
+            <Link to="/login">Ir para Login</Link>
+          </li>
+          <li>
+            <Link to="/adminregistro">Ir para Cadastro de Admin</Link>
+          </li>
+        </ul>
+      </nav>
           <Link to="/login">
             <Button variant="primary" className="login-button">Realizar Login</Button>
           </Link>
